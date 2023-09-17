@@ -40,15 +40,6 @@ _None._
 
 ## Action Patterns
 
-* [accept:entry,biz:error](#-acceptentrybizerror-)
-* [biz:error,create:entry](#-bizerrorcreateentry-)
-* [biz:error,ensure:entry](#-bizerrorensureentry-)
-* [biz:error,give:award](#-bizerrorgiveaward-)
-* [biz:error,load:entry](#-bizerrorloadentry-)
-* [biz:error,load:rules](#-bizerrorloadrules-)
-* [biz:error,lost:entry](#-bizerrorlostentry-)
-* [biz:error,update:occur](#-bizerrorupdateoccur-)
-* [biz:error,update:entry](#-bizerrorupdateentry-)
 
 
 <!--END:action-list-->
@@ -58,69 +49,6 @@ _None._
 
 ## Action Descriptions
 
-### &laquo; `accept:entry,biz:error` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,create:entry` &raquo;
-
-Create errorral entry.
-
-
-
-----------
-### &laquo; `biz:error,ensure:entry` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,give:award` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,load:entry` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,load:rules` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,lost:entry` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,update:occur` &raquo;
-
-No description provided.
-
-
-
-----------
-### &laquo; `biz:error,update:entry` &raquo;
-
-No description provided.
-
-
-
-----------
 
 
 <!--END:action-desc-->
