@@ -5,10 +5,18 @@ function error(options) {
     const seneca = this;
     let eventName = 'act-err' +
         (seneca.version.startsWith('3') ? '-4' : '');
-    seneca.on(eventName, function (whence, msg, meta, err, res) {
+    let errd = seneca.root.delegate({ fatal$: false });
+    let errids = {};
+    errd.on(eventName, async function (whence, msg, meta, err, res) {
         try {
             err.id = err.id || this.util.Nid();
-            this.entity('sys/error').save$({
+            if (errids[err.id]) {
+                return;
+            }
+            else {
+                errids[err.id] = 1;
+            }
+            await errd.entity('sys/error').save$({
                 id$: err.id,
                 w: Date.now(),
                 sid: this.id,

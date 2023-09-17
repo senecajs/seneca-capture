@@ -11,7 +11,10 @@ function error(this: any, options: ErrorOptions) {
   let eventName = 'act-err' +
     (seneca.version.startsWith('3') ? '-4' : '')
 
-  seneca.on(eventName, function(
+  let errd = seneca.root.delegate({ fatal$: false })
+  let errids: any = {}
+
+  errd.on(eventName, async function(
     this: any,
     whence: string,
     msg: any,
@@ -21,7 +24,14 @@ function error(this: any, options: ErrorOptions) {
   ) {
     try {
       err.id = err.id || this.util.Nid()
-      this.entity('sys/error').save$({
+      if (errids[err.id]) {
+        return
+      }
+      else {
+        errids[err.id] = 1
+      }
+
+      await errd.entity('sys/error').save$({
         id$: err.id,
         w: Date.now(),
         sid: this.id,
