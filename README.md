@@ -1,15 +1,15 @@
-# @seneca/refer
+# @seneca/error
 
-> _Seneca Refer_ is a plugin for [Seneca](http://senecajs.org)
+> _Seneca Error_ is a plugin for [Seneca](http://senecajs.org)
 
-    User referral business logic plugin for the Seneca platform.
+Error observability plugin for the Seneca platform.
 
-[![npm version](https://img.shields.io/npm/v/@seneca/refer.svg)](https://npmjs.com/package/@seneca/refer)
-[![build](https://github.com/senecajs/seneca-refer/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-refer/actions/workflows/build.yml)
-[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-refer/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-refer?branch=main)
-[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-refer/badge.svg)](https://snyk.io/test/github/senecajs/seneca-refer)
+[![npm version](https://img.shields.io/npm/v/@seneca/error.svg)](https://npmjs.com/package/@seneca/error)
+[![build](https://github.com/senecajs/seneca-error/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-error/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-error/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-error?branch=main)
+[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-error/badge.svg)](https://snyk.io/test/github/senecajs/seneca-error)
 [![DeepScan grade](https://deepscan.io/api/teams/5016/projects/20872/branches/581541/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=20872&bid=581541)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8242b80adb8acb685afd/maintainability)](https://codeclimate.com/github/senecajs/seneca-refer/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8242b80adb8acb685afd/maintainability)](https://codeclimate.com/github/senecajs/seneca-error/maintainability)
 
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -17,17 +17,14 @@
 ## Install
 
 ```sh
-$ npm install @seneca/refer
+$ npm install @seneca/error
 ```
 
 ## Quick Example
 
 ```js
-// Setup - get the key value (<SECRET>) separately from a vault or
-// environment variable.
-Seneca().use('refer', {})
+seneca.use('error')
 
-TODO
 ```
 
 <!--START:options-->
@@ -43,15 +40,15 @@ _None._
 
 ## Action Patterns
 
-* [accept:entry,biz:refer](#-acceptentrybizrefer-)
-* [biz:refer,create:entry](#-bizrefercreateentry-)
-* [biz:refer,ensure:entry](#-bizreferensureentry-)
-* [biz:refer,give:award](#-bizrefergiveaward-)
-* [biz:refer,load:entry](#-bizreferloadentry-)
-* [biz:refer,load:rules](#-bizreferloadrules-)
-* [biz:refer,lost:entry](#-bizreferlostentry-)
-* [biz:refer,update:occur](#-bizreferupdateoccur-)
-* [biz:refer,update:entry](#-bizreferupdateentry-)
+* [accept:entry,biz:error](#-acceptentrybizerror-)
+* [biz:error,create:entry](#-bizerrorcreateentry-)
+* [biz:error,ensure:entry](#-bizerrorensureentry-)
+* [biz:error,give:award](#-bizerrorgiveaward-)
+* [biz:error,load:entry](#-bizerrorloadentry-)
+* [biz:error,load:rules](#-bizerrorloadrules-)
+* [biz:error,lost:entry](#-bizerrorlostentry-)
+* [biz:error,update:occur](#-bizerrorupdateoccur-)
+* [biz:error,update:entry](#-bizerrorupdateentry-)
 
 
 <!--END:action-list-->
@@ -61,63 +58,63 @@ _None._
 
 ## Action Descriptions
 
-### &laquo; `accept:entry,biz:refer` &raquo;
+### &laquo; `accept:entry,biz:error` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,create:entry` &raquo;
+### &laquo; `biz:error,create:entry` &raquo;
 
-Create referral entry.
+Create errorral entry.
 
 
 
 ----------
-### &laquo; `biz:refer,ensure:entry` &raquo;
+### &laquo; `biz:error,ensure:entry` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,give:award` &raquo;
+### &laquo; `biz:error,give:award` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,load:entry` &raquo;
+### &laquo; `biz:error,load:entry` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,load:rules` &raquo;
+### &laquo; `biz:error,load:rules` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,lost:entry` &raquo;
+### &laquo; `biz:error,lost:entry` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,update:occur` &raquo;
+### &laquo; `biz:error,update:occur` &raquo;
 
 No description provided.
 
 
 
 ----------
-### &laquo; `biz:refer,update:entry` &raquo;
+### &laquo; `biz:error,update:entry` &raquo;
 
 No description provided.
 
