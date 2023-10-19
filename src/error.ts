@@ -31,6 +31,8 @@ function error(this: any, options: ErrorOptions) {
     res?: any
   ) {
     try {
+      msg.sys_error_code$ = err.code
+      msg.sys_error_whence$ = err.whence
       if (ignored.find(msg)) {
         return
       }

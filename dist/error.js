@@ -14,6 +14,8 @@ function error(options) {
     }
     errd.on(eventName, async function (whence, msg, meta, err, res) {
         try {
+            msg.sys_error_code$ = err.code;
+            msg.sys_error_whence$ = err.whence;
             if (ignored.find(msg)) {
                 return;
             }
