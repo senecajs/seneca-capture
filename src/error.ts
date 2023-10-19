@@ -2,6 +2,7 @@
 
 
 type ErrorOptions = {
+  ignore?: string[]
 }
 
 
@@ -14,6 +15,13 @@ function error(this: any, options: ErrorOptions) {
   let errd = seneca.root.delegate({ fatal$: false })
   let errids: any = {}
 
+  let ignored = seneca.util.Patrun()
+  for (let pat of (options.ignore || [])) {
+    let patobj = seneca.util.Jsonic(pat)
+    ignored.add(patobj, {})
+  }
+
+
   errd.on(eventName, async function(
     this: any,
     whence: string,
@@ -23,6 +31,10 @@ function error(this: any, options: ErrorOptions) {
     res?: any
   ) {
     try {
+      if (ignored.find(msg)) {
+        return
+      }
+
       err.id = err.id || this.util.Nid()
       if (errids[err.id]) {
         return
@@ -62,6 +74,7 @@ function error(this: any, options: ErrorOptions) {
 
 // Default options.
 const defaults: ErrorOptions = {
+  ignore: []
 }
 
 

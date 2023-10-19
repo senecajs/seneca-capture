@@ -7,8 +7,16 @@ function error(options) {
         (seneca.version.startsWith('3') ? '-4' : '');
     let errd = seneca.root.delegate({ fatal$: false });
     let errids = {};
+    let ignored = seneca.util.Patrun();
+    for (let pat of (options.ignore || [])) {
+        let patobj = seneca.util.Jsonic(pat);
+        ignored.add(patobj, {});
+    }
     errd.on(eventName, async function (whence, msg, meta, err, res) {
         try {
+            if (ignored.find(msg)) {
+                return;
+            }
             err.id = err.id || this.util.Nid();
             if (errids[err.id]) {
                 return;
@@ -43,7 +51,9 @@ function error(options) {
     });
 }
 // Default options.
-const defaults = {};
+const defaults = {
+    ignore: []
+};
 Object.assign(error, { defaults });
 exports.default = error;
 if ('undefined' !== typeof module) {
