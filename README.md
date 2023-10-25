@@ -1,15 +1,15 @@
-# @seneca/error
+# @seneca/capture
 
-> _Seneca Error_ is a plugin for [Seneca](http://senecajs.org)
+> _Seneca Capture_ is a plugin for [Seneca](http://senecajs.org)
 
-Error observability plugin for the Seneca platform.
+Capture observability plugin for the Seneca platform.
 
-[![npm version](https://img.shields.io/npm/v/@seneca/error.svg)](https://npmjs.com/package/@seneca/error)
-[![build](https://github.com/senecajs/seneca-error/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-error/actions/workflows/build.yml)
-[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-error/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-error?branch=main)
-[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-error/badge.svg)](https://snyk.io/test/github/senecajs/seneca-error)
+[![npm version](https://img.shields.io/npm/v/@seneca/capture.svg)](https://npmjs.com/package/@seneca/capture)
+[![build](https://github.com/senecajs/seneca-capture/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-capture/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/senecajs/seneca-capture/badge.svg?branch=main)](https://coveralls.io/github/senecajs/seneca-capture?branch=main)
+[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-capture/badge.svg)](https://snyk.io/test/github/senecajs/seneca-capture)
 [![DeepScan grade](https://deepscan.io/api/teams/5016/projects/20872/branches/581541/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=20872&bid=581541)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8242b80adb8acb685afd/maintainability)](https://codeclimate.com/github/senecajs/seneca-error/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8242b80adb8acb685afd/maintainability)](https://codeclimate.com/github/senecajs/seneca-capture/maintainability)
 
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -17,13 +17,13 @@ Error observability plugin for the Seneca platform.
 ## Install
 
 ```sh
-$ npm install @seneca/error
+$ npm install @seneca/capture
 ```
 
 ## Quick Example
 
 ```js
-seneca.use('error')
+seneca.use('capture')
 
 ```
 

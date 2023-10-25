@@ -5,5 +5,5 @@
 
 As per Seneca convention, plurals are _not_ used.
 
-### sys/error
+### sys/capture
 

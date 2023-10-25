@@ -1,12 +1,13 @@
 /* Copyright © 2023 Seneca Project Contributors, MIT License. */
 
 
-type ErrorOptions = {
+type CaptureOptions = {
   ignore?: string[]
+  modify: (capent: any, args: any[] | IArguments, actdef: any) => any
 }
 
 
-function error(this: any, options: ErrorOptions) {
+function capture(this: any, options: CaptureOptions) {
   const seneca: any = this
 
   let eventName = 'act-err' +
@@ -21,7 +22,6 @@ function error(this: any, options: ErrorOptions) {
     ignored.add(patobj, {})
   }
 
-
   errd.on(eventName, async function(
     this: any,
     whence: string,
@@ -31,11 +31,15 @@ function error(this: any, options: ErrorOptions) {
     res?: any
   ) {
     try {
-      msg.sys_error_code$ = err.code
-      msg.sys_error_whence$ = err.whence
-      if (ignored.find(msg)) {
+      msg.sys_capture_code$ = err.code
+      msg.sys_capture_whence$ = err.whence
+
+      if (false === msg.capture$ || ignored.find(msg)) {
         return
       }
+
+      let actdef = errd.find(msg)
+      // console.log('AD', msg, actdef)
 
       err.id = err.id || this.util.Nid()
       if (errids[err.id]) {
@@ -45,29 +49,39 @@ function error(this: any, options: ErrorOptions) {
         errids[err.id] = 1
       }
 
-      await errd.entity('sys/error').save$({
+      let tag = msg.capturetag$ || ''
+
+      let capent = {
         id$: err.id,
         w: Date.now(),
         sid: this.id,
         did: this.dd,
         mid: meta.id,
+        aid: actdef?.id,
+        pn: actdef?.plugin_fullname,
+        an: actdef?.name,
         tx: meta.tx,
         ms: meta.start,
         me: meta.end,
         v: this.version,
         st: this.start_time,
-        tag: this.tag,
+        stag: this.tag,
+        pat: actdef?.pattern,
         whence,
         code: err.code,
         text: err.message,
+        cp: err.callpoint,
         msg,
         meta,
         err,
         res,
-      })
+        tag,
+      }
+      capent = options.modify.call(errd, capent, arguments, actdef)
+      await errd.entity('sys/capture').save$(capent)
     }
     catch (ex) {
-      console.error('@seneca/error', err, ex)
+      console.error('@seneca/capture', err, ex)
     }
   })
 
@@ -75,15 +89,16 @@ function error(this: any, options: ErrorOptions) {
 
 
 // Default options.
-const defaults: ErrorOptions = {
-  ignore: []
+const defaults: CaptureOptions = {
+  ignore: [],
+  modify: (capent: any) => capent,
 }
 
 
-Object.assign(error, { defaults })
+Object.assign(capture, { defaults })
 
-export default error
+export default capture
 
 if ('undefined' !== typeof module) {
-  module.exports = error
+  module.exports = capture
 }

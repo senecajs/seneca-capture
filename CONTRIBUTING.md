@@ -76,4 +76,4 @@ npm run prettier
 **Or**
 
 Feel free to
-[open an Issue](https://github.com/senecajs/seneca-error/issues).
+[open an Issue](https://github.com/senecajs/seneca-capture/issues).
