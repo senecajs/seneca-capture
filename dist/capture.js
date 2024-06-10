@@ -12,16 +12,18 @@ function capture(options) {
         let patobj = seneca.util.Jsonic(pat);
         ignored.add(patobj, {});
     }
+    const errid = seneca.util.Nid({ length: 16 });
     errd.on(eventName, async function (whence, msg, meta, err, res) {
         try {
             msg.sys_capture_code$ = err.code;
             msg.sys_capture_whence$ = err.whence;
-            if (false === msg.capture$ || ignored.find(msg)) {
+            if (false === msg.capture$ || ignored.find(msg) ||
+                ('sys' === msg.base && 'capture' === msg.name)) {
                 return;
             }
             let actdef = errd.find(msg);
             // console.log('AD', msg, actdef)
-            err.id = err.id || this.util.Nid();
+            err.id = err.id || errid();
             if (errids[err.id]) {
                 return;
             }
