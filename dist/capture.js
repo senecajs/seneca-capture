@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 function capture(options) {
     const seneca = this;
-    let eventName = 'act-err' +
-        (seneca.version.startsWith('3') ? '-4' : '');
+    // Seneca 4 emits act-err with (whence, msg, meta, err, res).
+    let eventName = 'act-err';
     let errd = seneca.root.delegate({ fatal$: false });
     let errids = {};
     let ignored = seneca.util.Patrun();

@@ -12,8 +12,7 @@ describe('capture', () => {
     expect(CaptureDoc).toBeDefined()
     const seneca = Seneca({ legacy: false })
       .test()
-      .use('promisify')
-      .use('entity')
+      .use('@seneca/entity')
       .use(Capture)
     await seneca.ready()
   })
@@ -24,8 +23,7 @@ describe('capture', () => {
     const seneca = Seneca({ legacy: false })
       .test()
       .quiet()
-      .use('promisify')
-      .use('entity')
+      .use('@seneca/entity')
       .use(Capture)
     await seneca.ready()
 
@@ -62,8 +60,7 @@ describe('capture', () => {
     const seneca = Seneca({ legacy: false })
       .test()
       .quiet()
-      .use('promisify')
-      .use('entity')
+      .use('@seneca/entity')
       .use(Capture, {
         ignore: ['sys:entity,name:foo', 'bar:1']
       })
@@ -115,9 +112,8 @@ describe('capture', () => {
     const seneca = Seneca({ tag: 's0', legacy: false })
       .test()
       .quiet()
-      .use('promisify')
-      .use('entity')
-      .use('entity-util', {
+      .use('@seneca/entity')
+      .use('@seneca/entity-util', {
         when: {
           active: true
         }
@@ -174,9 +170,8 @@ describe('capture', () => {
     const seneca = Seneca({ legacy: false, tag: 's1' })
       .test()
       .quiet()
-      .use('promisify')
-      .use('entity')
-      .use('entity-util', {
+      .use('@seneca/entity')
+      .use('@seneca/entity-util', {
         when: {
           active: true,
           human: 'y',
