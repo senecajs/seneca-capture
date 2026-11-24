@@ -17,14 +17,16 @@ Capture observability plugin for the Seneca platform.
 ## Install
 
 ```sh
-$ npm install @seneca/capture
+$ npm install seneca@^4 @seneca/entity @seneca/capture
 ```
+
+Requires Node.js `>=24`, Seneca `^4.0.0` and `@seneca/entity` `^29.0.0`:
+failed actions are saved as `sys/capture` entities.
 
 ## Quick Example
 
 ```js
-seneca.use('capture')
-
+seneca.use('@seneca/entity').use('@seneca/capture')
 ```
 
 <!--START:options-->
